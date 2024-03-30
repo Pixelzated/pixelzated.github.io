@@ -1,0 +1,571 @@
+/* =============================================================================
+   HTML5 CSS Reset Minified - Eric Meyer
+   ========================================================================== */
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+body {
+  line-height: 1;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+nav ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: none;
+}
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  text-decoration: none;
+}
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+del {
+  text-decoration: line-through;
+}
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+input,
+select {
+  vertical-align: middle;
+}
+li {
+  list-style: none;
+}
+
+/* =============================================================================
+   My CSS
+   ========================================================================== */
+
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  scroll-behavior: smooth !important;
+}
+
+body {
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  margin: 0;
+  background-color: #111327;
+  word-break: break-word;
+  font-size: 30px;
+  overflow-x: hidden;
+}
+
+/* ---- stats.js ---- */
+
+.count-particles {
+  background: #000022;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 80px;
+  color: #13e8e9;
+  font-size: 0.8em;
+  text-align: left;
+  text-indent: 4px;
+  line-height: 14px;
+  padding-bottom: 2px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  display: none;
+}
+
+.js-count-particles {
+  font-size: 1.1em;
+}
+
+#stats,
+.count-particles {
+  -webkit-user-select: none;
+  user-select: none;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+#stats {
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+  z-index: 100;
+  display: none;
+}
+
+.count-particles {
+  border-radius: 0 0 3px 3px;
+}
+
+/* ---- particles.js container ---- */
+
+#particles-js {
+  top: 0px;
+  position: absolute;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  background-color: #111327;
+  background-image: url("");
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  filter: blur(0.05rem);
+}
+
+#info-container {
+  position: absolute;
+  z-index: 6;
+  padding: 5%;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto auto;
+  gap: 30px 0px;
+  grid-template-areas:
+    "header . . ."
+    "about-me-1 . renderer ."
+    "about-me-2 . renderer ."
+    "button-container . . .";
+}
+
+.header {
+  position: relative;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(-45deg, #ee7752, #b4c62d, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite,
+    slide-in-bottom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
+  -webkit-animation: gradient 15s ease infinite,
+    slide-in-bottom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
+  font-size: 64px;
+  z-index: inherit;
+}
+
+.about-me {
+  position: relative;
+  font-size: 50px;
+}
+
+.slider {
+  overflow: hidden;
+  margin-left: 15px;
+  margin-top: 50px;
+  display: inline-block;
+}
+
+.slider__word {
+  font-weight: 500;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: translateY(100%);
+  animation: slide 6s ease infinite;
+  color: #f5f5f5;
+  opacity: 0;
+  bottom: 0;
+  margin-bottom: -0.04rem;
+  animation-delay: 6s;
+  white-space: nowrap;
+}
+
+.slider__word:nth-child(2) {
+  animation-delay: 1.5s;
+}
+
+.slider__word:nth-child(3) {
+  animation-delay: 3s;
+}
+
+.slider__word:nth-child(4) {
+  animation-delay: 4.5s;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  8% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  24% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  32% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes slide-in-bottom {
+  0% {
+    -webkit-transform: translateY(1000px);
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-bottom {
+  0% {
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slider-icon {
+  max-height: -webkit-fill-available;
+  padding-right: 1rem;
+  margin-bottom: -0.5rem;
+}
+
+.blender {
+  content: url(../assets/images/blender.png);
+}
+
+.resolve {
+  content: url(../assets/images/resolve.png);
+}
+
+.code {
+  content: url(../assets/images/visual-studio.png);
+}
+
+.truenas {
+  content: url(../assets/images/truenas-scale.png);
+}
+
+.strip {
+  position: absolute;
+  z-index: 2;
+  bottom: -30px;
+  left: 0;
+  right: 0;
+  height: 90px;
+  background: linear-gradient(-45deg, #ee7752, #b4c62d, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 0, 0, 0.08) 10px,
+    rgba(0, 0, 0, 0.25) 20px,
+    black 20px
+  );
+  -webkit-animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both,
+    gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#renderer {
+  position: relative;
+  z-index: 10;
+  padding: 5%;
+  margin: auto auto auto 100vh;
+  -webkit-animation: roll-in-blurred-top 2s cubic-bezier(0.23, 1, 0.32, 1) 0.5s
+    both;
+  animation: roll-in-blurred-top 2s cubic-bezier(0.23, 1, 0.32, 1) 0.5s both;
+}
+
+.btn {
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+}
+.btn:hover .btn-slide-show-text1 {
+  margin-left: 65px;
+}
+.btn-shadow-drop {
+  margin-top: 25%;
+  position: relative;
+  background: #111327;
+  padding: 20px;
+  font-size: 0.9em;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out 0s;
+  left: 0px;
+  top: 0px;
+  width: 15rem;
+  pointer-events: all;
+}
+.btn-shadow-drop:hover {
+  right: 4px;
+  top: 4px;
+  box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px;
+}
+.btn-shadow-drop--green {
+  border: 1px solid rgb(128, 237, 153);
+  color: rgb(128, 237, 153);
+  box-shadow: rgb(128, 237, 153) -4px 4px 0px 0px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(-45deg, #ee7752, #b4c62d, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite,
+    slide-in-bottom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
+}
+
+.fade-up {
+  -webkit-animation: slide-in-bottom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s
+    both;
+  animation: slide-in-bottom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2024-3-28 3:19:46
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation roll-in-blurred-top
+ * ----------------------------------------
+ */
+
+@-webkit-keyframes roll-in-blurred-top {
+  0% {
+    -webkit-transform: translateY(-800px) rotate(-720deg);
+    transform: translateY(-800px) rotate(-720deg);
+    -webkit-filter: blur(50px);
+    filter: blur(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) rotate(0deg);
+    transform: translateY(0) rotate(0deg);
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+@keyframes roll-in-blurred-top {
+  0% {
+    -webkit-transform: translateY(-800px) rotate(-720deg);
+    transform: translateY(-800px) rotate(-720deg);
+    -webkit-filter: blur(50px);
+    filter: blur(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) rotate(0deg);
+    transform: translateY(0) rotate(0deg);
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2024-3-28 11:36:43
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation fade-in
+ * ----------------------------------------
+ */
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.text-container {
+  position: relative; /* Change position to relative */
+  bottom: -5em;
+  padding: 30px; /* Add some padding for better readability */
+  text-align: center; /* Center the text horizontally */
+  color: #ffffff; /* Text color */
+  z-index: -3;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.header {
+  grid-area: header;
+}
+.about-me-1 {
+  grid-area: about-me-1;
+}
+.about-me-2 {
+  grid-area: about-me-2;
+}
+#button-container {
+  grid-area: button-container;
+}
+
+@media screen and (max-width: 900px) {
+  #renderer {
+    display: none;
+  }
+
+  .slider__word {
+    white-space: unset;
+  }
+}

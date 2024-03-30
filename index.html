@@ -1,8 +1,103 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-<meta http-equiv="refresh" content="2; url='https://studio.code.org/projects/applab/wKK44aPQlHGRjZv2-CtzAZpvXiMzZ8IAOfA2MYy35mg'" />
-    <title>Under Construction!</title>
-    <link href="/assets/style.css" rel="stylesheet">
-<h1 style="text-align: center;">Under Construction!🏗️ In the mean time, redirecting to Alan's Annoying Acoustics</h1>
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <title>The Pixel Plaza</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.png  " />
+    <meta
+      name="description"
+      content="Pixelzated's very own corner of the Internet"
+    />
+    <meta name="author" content="Pixelzated" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" media="screen" href="css/style.css" />
+  </head>
+  <body>
+    <!-- count particles -->
+    <div class="count-particles">
+      <span class="js-count-particles">--</span> particles
+    </div>
+
+    <!-- particles.js container -->
+    <div id="particles-js"></div>
+
+    <!-- Text content below particles.js -->
+    <div id="info-container">
+      <h1 class="header" id="hello">Hello there.</h1>
+      <p class="about-me about-me-1 fade-up">I'm Pixelzated,</p>
+      <p class="about-me about-me-2 fade-up">
+        a
+        <span class="slider">
+          <span class="slider__word"
+            ><img class="slider-icon code" />Web Developer.</span
+          >
+          <span class="slider__word"
+            ><img class="slider-icon resolve" />Video Editor.
+          </span>
+          <span class="slider__word"
+            ><img class="slider-icon truenas" />Network Admin.</span
+          >
+          <span class="slider__word">
+            <img class="slider-icon blender" />3D Artist.
+          </span>
+        </span>
+      </p>
+      <div id="button-container">
+        <a href="#under-construction"
+          ><button
+            class="btn btn-shadow-drop btn-shadow-drop--green"
+            style="animation-delay: 1.5s"
+          >
+            Projects
+          </button></a
+        >
+      </div>
+    </div>
+    <canvas id="renderer"></canvas>
+    <div class="strip"></div>
+    <div id="under-construction" class="text-container">
+      <p>🚧 Under Construction, more coming soon!™ 🚧</p>
+    </div>
+    <!-- scripts -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.162.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.162.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script src="js/particles.js"></script>
+    <script src="js/app.js"></script>
+    <script type="module" src="js/3d.js"></script>
+
+    <!-- stats.js -->
+    <script src="js/lib/stats.js"></script>
+    <script>
+      var count_particles, stats, update;
+      stats = new Stats();
+      stats.setMode(0);
+      stats.domElement.style.position = "absolute";
+      stats.domElement.style.left = "0px";
+      stats.domElement.style.top = "0px";
+      document.body.appendChild(stats.domElement);
+      count_particles = document.querySelector(".js-count-particles");
+      update = function () {
+        stats.begin();
+        stats.end();
+        if (
+          window.pJSDom[0].pJS.particles &&
+          window.pJSDom[0].pJS.particles.array
+        ) {
+          count_particles.innerText =
+            window.pJSDom[0].pJS.particles.array.length;
+        }
+        requestAnimationFrame(update);
+      };
+      requestAnimationFrame(update);
+    </script>
+  </body>
+</html>
