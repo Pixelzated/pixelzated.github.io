@@ -1,31 +1,65 @@
 import * as THREE from "three";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { GLTFLoader } from "./lib/GLTFLoader.js";
+
+import {
+  BloomEffect,
+  EffectComposer,
+  EffectPass,
+  RenderPass,
+} from "postprocessing";
 
 const canvReference = document.getElementById("renderer");
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, 1, 0.01, 2000);
+const rendererHeight = document.getElementById("renderer").offsetHeight;
+const rendererWidth = document.getElementById("renderer").offsetHeight;
 var rVal = 0;
 var gVal = 0.5;
 var bVal = 1;
 var color2 = new THREE.Color("#23a6d5");
 var colorsPick = ["#23d5ab", "#b4c62d", "#ee7752", "#23a6d5"];
-
 var devMode = false;
-// Select the canvas from the document
 
+// Select the canvas from the document
 const renderer = new THREE.WebGLRenderer({
-  antialias: true,
   canvas: canvReference,
+  antialias: true,
   alpha: true,
 });
-renderer.setSize(window.innerWidth, window.innerHeight);
 
+// Set size of render window and scale properly based on screen size
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(rendererWidth, rendererHeight);
+
+// Renderer and Composer
+const composer = new EffectComposer(renderer);
+const renderScene = new RenderPass(scene, camera);
+composer.setSize(rendererWidth, rendererHeight);
+composer.addPass(renderScene);
+
+// Bloom Pass
+composer.addPass(
+  new EffectPass(
+    camera,
+    new BloomEffect({
+      luminanceThreshold: 0.1,
+      luminanceSmoothing: 0.01,
+      resolutionScale: 1,
+      intensity: 1,
+      mipmapBlur: true,
+      radius: 0.4,
+    })
+  )
+);
+
+// Add basic material
 const material = new THREE.MeshBasicMaterial({
   color: color2,
   wireframe: true,
   vertexColors: false,
 });
 
+// Load model and set position
 const loader = new GLTFLoader();
 var model = new THREE.Object3D();
 const light = new THREE.PointLight(0xff0000, 1, 100);
@@ -58,25 +92,30 @@ if (devMode) {
   console.log(model);
 }
 
-camera.position.z = 17;
+// set camera position
+camera.position.z = 20;
 model.material = material;
 
+// Main animation call to step frame
 function animate() {
   if (!down) {
     model.rotation.y += 0.003;
   }
-  renderer.render(scene, camera);
+  composer.render();
   requestAnimationFrame(animate);
 }
 
 animate();
 
-canvReference.style.setProperty("width", "30rem");
-canvReference.style.setProperty("height", "30rem");
-
 if (devMode) {
   console.log(colorsPick[getRandomInt(0, 4)]);
 }
+
+// Loading screen
+THREE.DefaultLoadingManager.onLoad = function () {
+  console.log("Loading Complete!");
+  canvReference.classList.add("fade-in");
+};
 
 function cycleColorsOld() {
   if (rVal <= 1) {
