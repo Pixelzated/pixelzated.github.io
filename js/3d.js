@@ -47,7 +47,7 @@ composer.addPass(
       resolutionScale: 1,
       intensity: 1,
       mipmapBlur: true,
-      radius: 0.4,
+      radius: 0.3,
     })
   )
 );
