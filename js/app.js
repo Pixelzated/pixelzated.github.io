@@ -11,13 +11,27 @@ particlesJS.load('particles-js', 'particles.json', function() {
 
 /* Otherwise just put the config content (json): */
 
+let test = 20
+
+function getRandomIntInclusive(min, max) {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+}
+
+
+test = getRandomIntInclusive(50, 300)
+console.log(test)
+
+
+
 particlesJS(
   "particles-js",
 
   {
     particles: {
       number: {
-        value: 200,
+        value: 20,
         density: {
           enable: true,
           value_area: 200,
@@ -52,8 +66,8 @@ particlesJS(
         },
       },
       size: {
-        value: 1.2,
-        random: false,
+        value: 3,
+        random: true,
         anim: {
           enable: false,
           speed: 20,
@@ -62,17 +76,17 @@ particlesJS(
         },
       },
       line_linked: {
-        enable: false,
-        distance: 40,
-        color: "#ffffff",
-        opacity: 0.6,
-        width: 0.1,
+        enable: true,
+        distance: 150,
+        color: "#289494",
+        opacity: 0.8,
+        width: 0.15,
       },
       move: {
         enable: true,
         speed: 5,
         direction: "none",
-        random: false,
+        random: true,
         straight: false,
         out_mode: "out",
         attract: {
@@ -103,8 +117,8 @@ particlesJS(
           },
         },
         bubble: {
-          distance: 70,
-          size: 3,
+          distance: 100,
+          size: 5,
           duration: 2,
           opacity: 8,
           speed: 3,
@@ -113,7 +127,7 @@ particlesJS(
           distance: 200,
         },
         push: {
-          particles_nb: 4,
+          particles_nb: 5,
         },
         remove: {
           particles_nb: 2,
@@ -131,3 +145,4 @@ particlesJS(
     },
   }
 );
+
